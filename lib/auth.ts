@@ -74,5 +74,7 @@ export const validateRequest = cache(
 export const spotify = new Spotify(
   process.env.SPOTIFY_CLIENT_ID!,
   process.env.SPOTIFY_CLIENT_SECRET!,
-  "https://spotify-stats-azure.vercel.app/login/spotify/callback",
+  process.env.NODE_ENV === "production"
+    ? "https://spotify-stats-azure.vercel.app/login/spotify/callback"
+    : "http://localhost:3000/login/spotify/callback",
 );

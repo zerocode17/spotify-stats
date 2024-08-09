@@ -9,7 +9,7 @@ export default async function MainNav() {
   const { user } = await validateRequest();
 
   return (
-    <nav className="mx-auto max-w-[1300px]">
+    <nav className="mx-auto max-w-[1300px] px-2 lg:px-0">
       <div className="flex w-full justify-between py-6">
         <Link href={"/"}>
           <h1 className="text-2xl font-bold">Spotify Stats</h1>
@@ -25,7 +25,10 @@ export default async function MainNav() {
               </form>
             </div>
           ) : (
-            <Button className="rounded-2xl font-semibold" asChild>
+            <Button
+              className="hidden rounded-2xl font-semibold md:block"
+              asChild
+            >
               <Link href={"/login/spotify"}>Connect with Spotify</Link>
             </Button>
           )}

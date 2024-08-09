@@ -117,7 +117,7 @@ export default function GeneratorCard({
           Get recommendations{" "}
           <TooltipProvider delayDuration={200}>
             <Tooltip>
-              <TooltipTrigger>
+              <TooltipTrigger className="hidden lg:block">
                 <Info className="size-5 text-zinc-600" />
               </TooltipTrigger>
               <TooltipContent className="flex flex-col p-2">
@@ -148,9 +148,9 @@ export default function GeneratorCard({
                 key={track.id}
                 className="group relative flex items-center justify-between rounded-md hover:bg-muted"
               >
-                <li className="z-10 flex items-center space-x-2">
+                <li className="flex items-center space-x-2">
                   <Image
-                    className="z-10 h-16 w-16 rounded-md"
+                    className="h-16 w-16 rounded-md"
                     src={track.album.images[2].url}
                     alt={`${track.name} Cover Image`}
                     width={track.album.images[2].width}
@@ -167,16 +167,16 @@ export default function GeneratorCard({
                 </li>
                 <TooltipProvider>
                   <Tooltip>
-                    <TooltipTrigger asChild>
+                    <TooltipTrigger asChild className="hidden lg:block">
                       <Button
-                        className="absolute right-2 hidden items-center justify-center rounded-full duration-200 animate-in fade-in group-hover:flex"
+                        className="absolute right-2 z-30 hidden items-center justify-center rounded-full duration-200 animate-in fade-in group-hover:flex"
                         size={"icon"}
                         onClick={() => handlePlay(track.uri)}
                       >
                         <Play className="h-5 w-5" fill="black" />
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent className="px-1 py-1 text-xs">
+                    <TooltipContent className="hidden px-1 py-1 text-xs lg:block">
                       Play on Spotify
                     </TooltipContent>
                   </Tooltip>
@@ -195,7 +195,4 @@ export default function GeneratorCard({
       </CardContent>
     </Card>
   );
-}
-function updatePlaylist(id: any, uris: any) {
-  throw new Error("Function not implemented.");
 }

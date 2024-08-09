@@ -97,16 +97,16 @@ export default function TracksCard({
                 </li>
                 <TooltipProvider>
                   <Tooltip>
-                    <TooltipTrigger asChild>
+                    <TooltipTrigger asChild className="hidden lg:block">
                       <Button
-                        className="absolute right-2 hidden items-center justify-center rounded-full duration-200 animate-in fade-in group-hover:flex"
+                        className="absolute right-2 z-30 hidden items-center justify-center rounded-full duration-200 animate-in fade-in group-hover:flex"
                         size={"icon"}
                         onClick={() => handlePlay(item.uri)}
                       >
                         <Play className="h-5 w-5" fill="black" />
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent className="px-1 py-1 text-xs">
+                    <TooltipContent className="hidden px-1 py-1 text-xs lg:block">
                       Play on Spotify
                     </TooltipContent>
                   </Tooltip>
