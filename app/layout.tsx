@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import MainNav from "@/components/main-nav";
 import { Toaster } from "@/components/ui/toaster";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], weight: "variable" });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           <MainNav />
           {children}
           <Toaster />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
