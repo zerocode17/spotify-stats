@@ -78,8 +78,6 @@ export async function addToPlaylist(id: string, uris: string[]) {
     }),
   });
 
-  console.log(uris);
-
   if (!res.ok) {
     return {
       error: "Error adding tracks to playlist",
