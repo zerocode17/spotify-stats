@@ -167,7 +167,7 @@ export default function GeneratorCard({
                 </li>
                 <TooltipProvider>
                   <Tooltip>
-                    <TooltipTrigger asChild className="hidden lg:block">
+                    <TooltipTrigger asChild>
                       <Button
                         className="absolute right-2 z-30 hidden items-center justify-center rounded-full duration-200 animate-in fade-in group-hover:flex"
                         size={"icon"}
