@@ -71,7 +71,7 @@ export default function TracksCard({
       </CardHeader>
       <CardContent>
         <ul className="space-y-4">
-          {tracks.items.length > 0
+          {tracks.items
             ? tracks.items
                 .slice(trackIndexStart, trackIndexEnd)
                 .map((item: any, index: number) => (

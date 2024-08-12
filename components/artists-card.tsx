@@ -31,7 +31,7 @@ export default function ArtistsCard({
       </CardHeader>
       <CardContent>
         <ul className="space-y-4">
-          {artists.items.length > 0
+          {artists.items
             ? artists.items
                 .slice(artistIndexStart, artistIndexEnd)
                 .map((item: any, index: number) => (
