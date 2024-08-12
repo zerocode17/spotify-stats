@@ -31,23 +31,25 @@ export default function ArtistsCard({
       </CardHeader>
       <CardContent>
         <ul className="space-y-4">
-          {artists.items
-            .slice(artistIndexStart, artistIndexEnd)
-            .map((item: any, index: number) => (
-              <li key={index} className="flex items-center space-x-2">
-                <Image
-                  className="h-16 w-16 rounded-md"
-                  src={item.images[2].url}
-                  alt={`${item.name} Cover Image`}
-                  width={64}
-                  height={64}
-                />
-                <h1 className="text-lg">
-                  {`${index + 1}. `}
-                  {item.name}
-                </h1>
-              </li>
-            ))}
+          {artists
+            ? artists.items
+                .slice(artistIndexStart, artistIndexEnd)
+                .map((item: any, index: number) => (
+                  <li key={index} className="flex items-center space-x-2">
+                    <Image
+                      className="h-16 w-16 rounded-md"
+                      src={item.images[2].url}
+                      alt={`${item.name} Cover Image`}
+                      width={64}
+                      height={64}
+                    />
+                    <h1 className="text-lg">
+                      {`${index + 1}. `}
+                      {item.name}
+                    </h1>
+                  </li>
+                ))
+            : null}
         </ul>
         {artistIndexEnd < artists.items.length && (
           <Button

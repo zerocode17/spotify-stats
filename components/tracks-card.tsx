@@ -71,48 +71,50 @@ export default function TracksCard({
       </CardHeader>
       <CardContent>
         <ul className="space-y-4">
-          {tracks.items
-            .slice(trackIndexStart, trackIndexEnd)
-            .map((item: any, index: number) => (
-              <div
-                key={index}
-                className="group relative flex items-center justify-between rounded-md hover:bg-muted"
-              >
-                <li className="flex items-center space-x-2">
-                  <Image
-                    className="h-16 w-16 rounded-md"
-                    src={item.album.images[2].url}
-                    alt={`${item.name} Cover Image`}
-                    width={item.album.images[2].width}
-                    height={item.album.images[2].height}
-                  />
-                  <div className="relative flex w-full flex-col">
-                    <span>{`${index + 1}. ${item.name}`}</span>
-                    <span className="text-muted-foreground">
-                      {item.artists
-                        .map((artist: any) => artist.name)
-                        .join(", ")}
-                    </span>
+          {tracks
+            ? tracks.items
+                .slice(trackIndexStart, trackIndexEnd)
+                .map((item: any, index: number) => (
+                  <div
+                    key={index}
+                    className="group relative flex items-center justify-between rounded-md hover:bg-muted"
+                  >
+                    <li className="flex items-center space-x-2">
+                      <Image
+                        className="h-16 w-16 rounded-md"
+                        src={item.album.images[2].url}
+                        alt={`${item.name} Cover Image`}
+                        width={item.album.images[2].width}
+                        height={item.album.images[2].height}
+                      />
+                      <div className="relative flex w-full flex-col">
+                        <span>{`${index + 1}. ${item.name}`}</span>
+                        <span className="text-muted-foreground">
+                          {item.artists
+                            .map((artist: any) => artist.name)
+                            .join(", ")}
+                        </span>
+                      </div>
+                    </li>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            className="absolute right-2 z-30 hidden items-center justify-center rounded-full duration-200 animate-in fade-in group-hover:flex"
+                            size={"icon"}
+                            onClick={() => handlePlay(item.uri)}
+                          >
+                            <Play className="h-5 w-5" fill="black" />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent className="hidden px-1 py-1 text-xs lg:block">
+                          Play on Spotify
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
                   </div>
-                </li>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        className="absolute right-2 z-30 hidden items-center justify-center rounded-full duration-200 animate-in fade-in group-hover:flex"
-                        size={"icon"}
-                        onClick={() => handlePlay(item.uri)}
-                      >
-                        <Play className="h-5 w-5" fill="black" />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent className="hidden px-1 py-1 text-xs lg:block">
-                      Play on Spotify
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
-            ))}
+                ))
+            : null}
         </ul>
         {trackIndexEnd < tracks.items.length && (
           <Button
