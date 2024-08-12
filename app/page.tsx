@@ -15,12 +15,20 @@ export default async function Home({
 
   const allData = await getData();
 
+  if (allData.error) {
+    return <div>{allData.error}</div>;
+  }
+
+  if (!allData.data) {
+    return null;
+  }
+
   return (
     <>
       {user ? (
         <main>
           <TimeframeSelector />
-          <MainCards allData={allData} timeframe={timeframe} />
+          <MainCards allData={allData.data} timeframe={timeframe} />
         </main>
       ) : (
         <Landing />
