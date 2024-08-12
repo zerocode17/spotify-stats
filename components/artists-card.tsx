@@ -15,6 +15,10 @@ export default function ArtistsCard({
 
   const [artistLoad, setArtistLoad] = useState(true);
 
+  if (!artists.items) {
+    return null;
+  }
+
   return (
     <Card className="h-fit w-full max-w-[450px]">
       <CardHeader>
