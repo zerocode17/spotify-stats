@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Landing from "@/components/landing";
 import MainCards from "@/components/main-cards";
 import TimeframeSelector from "@/components/timeframe-selector";
@@ -23,10 +24,15 @@ export default async function Home({
   return (
     <>
       {user ? (
-        <main>
-          <TimeframeSelector />
-          <MainCards allData={allData!.data} timeframe={timeframe} />
-        </main>
+        <>
+          <main>
+            <TimeframeSelector />
+            <MainCards allData={allData!.data} timeframe={timeframe} />
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </>
       ) : (
         <Landing />
       )}
