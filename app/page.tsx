@@ -13,13 +13,16 @@ export default async function Home({
 
   const timeframe = searchParams.timeframe || "6 months";
 
-  const allData = await getData();
+  let allData;
+  if (user) {
+    allData = await getData();
+  }
 
-  if (allData.error) {
+  if (allData?.error) {
     return <div>{allData.error}</div>;
   }
 
-  if (!allData.data) {
+  if (!allData?.data) {
     return null;
   }
 
