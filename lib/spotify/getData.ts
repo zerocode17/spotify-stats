@@ -21,6 +21,7 @@ export async function getData() {
       const tracksResponse = await fetch(
         `https://api.spotify.com/v1/me/top/tracks?time_range=${timeframe}&limit=${limit}`,
         {
+          next: { revalidate: 24 * 60 * 60 },
           method: "get",
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -30,6 +31,7 @@ export async function getData() {
       const artistsResponse = await fetch(
         `https://api.spotify.com/v1/me/top/artists?time_range=${timeframe}&limit=${limit}`,
         {
+          next: { revalidate: 24 * 60 * 60 },
           method: "get",
           headers: {
             Authorization: `Bearer ${accessToken}`,
