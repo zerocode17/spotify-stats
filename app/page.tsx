@@ -16,14 +16,8 @@ export default async function Home({
   let allData;
   if (user) {
     allData = await getData();
-  }
-
-  if (allData?.error) {
-    return <div>{allData.error}</div>;
-  }
-
-  if (!allData?.data) {
-    return null;
+  } else {
+    allData = null;
   }
 
   return (
@@ -31,7 +25,7 @@ export default async function Home({
       {user ? (
         <main>
           <TimeframeSelector />
-          <MainCards allData={allData.data} timeframe={timeframe} />
+          <MainCards allData={allData!.data} timeframe={timeframe} />
         </main>
       ) : (
         <Landing />
