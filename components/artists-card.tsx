@@ -8,14 +8,14 @@ export default function ArtistsCard({
   artists,
 }: {
   timeframe: string;
-  artists: any;
+  artists: any | null;
 }) {
   const artistIndexStart = 0;
   const [artistIndexEnd, setArtistIndexEnd] = useState(25);
 
   const [artistLoad, setArtistLoad] = useState(true);
 
-  if (!artists.items) {
+  if (!artists) {
     return null;
   }
 

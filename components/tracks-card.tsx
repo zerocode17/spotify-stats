@@ -18,7 +18,7 @@ export default function TracksCard({
   tracks,
 }: {
   timeframe: string;
-  tracks: any;
+  tracks: any | null;
 }) {
   const trackIndexStart = 0;
   const [trackIndexEnd, setTrackIndexEnd] = useState(25);
@@ -26,7 +26,7 @@ export default function TracksCard({
 
   const { toast } = useToast();
 
-  if (!tracks.items) {
+  if (!tracks) {
     return null;
   }
 
