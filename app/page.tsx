@@ -4,7 +4,6 @@ import MainCards from "@/components/main-cards";
 import TimeframeSelector from "@/components/timeframe-selector";
 import { validateRequest } from "@/lib/auth";
 import { getData } from "@/lib/spotify/getData";
-import { cookies } from "next/headers";
 
 export default async function Home({
   searchParams,
@@ -15,11 +14,9 @@ export default async function Home({
 
   const timeframe = searchParams.timeframe || "6 months";
 
-  const token = cookies().get("spotify_refresh_token")?.value;
-
   let allData;
 
-  if (token) {
+  if (user) {
     allData = await getData();
     if (allData.error) {
       console.log("Error: " + allData.error);

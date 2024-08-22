@@ -36,7 +36,11 @@ export async function navigate(path: string, type?: RedirectType) {
 
 // Create playlist in Spotify, returns playlist ID
 export async function createPlaylist() {
-  const { access_token } = await getToken();
+  let accessToken = cookies().get("spotify_access_token")?.value;
+
+  if (!accessToken) {
+    accessToken = (await getToken()).access_token;
+  }
   const { user } = await validateRequest();
 
   if (!user) {
@@ -51,7 +55,7 @@ export async function createPlaylist() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${access_token}`,
+        Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({
         name: "Recommendations by Spotify Stats",
@@ -65,13 +69,17 @@ export async function createPlaylist() {
 }
 
 export async function addToPlaylist(id: string, uris: string[]) {
-  const { access_token } = await getToken();
+  let accessToken = cookies().get("spotify_access_token")?.value;
+
+  if (!accessToken) {
+    accessToken = (await getToken()).access_token;
+  }
 
   const res = await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${access_token}`,
+      Authorization: `Bearer ${accessToken}`,
     },
     body: JSON.stringify({
       uris,
