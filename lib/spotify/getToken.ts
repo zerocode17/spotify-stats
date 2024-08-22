@@ -32,7 +32,7 @@ export async function getToken() {
     payload,
   );
 
-  const token: Token = await tokensRes.json();
+  const tokens: Token = await tokensRes.json();
 
-  return token;
+  return tokens;
 }

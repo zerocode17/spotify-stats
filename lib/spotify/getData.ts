@@ -3,16 +3,14 @@ import { getToken } from "./getToken";
 
 // fetch all spotify data needed
 export async function getData() {
-  const refreshToken = cookies().get("spotify_refresh_token")?.value;
+  let accessToken = cookies().get("spotify_access_token")?.value;
 
-  if (!refreshToken) {
-    return { error: "No refresh token found" };
+  if (!accessToken) {
+    accessToken = (await getToken()).access_token;
   }
 
   try {
     // get access token
-    const { access_token: accessToken } = await getToken();
-
     const timeframes = ["short_term", "medium_term", "long_term"];
     const limit = "50";
 

@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { getToken } from "./getToken";
 
 function getRandomElements<T>(array: T[], n: number): T[] {
@@ -9,9 +10,13 @@ export async function getRecommend(seeds: {
   tracks: string[];
   artists: string[];
 }) {
-  try {
-    const token = await getToken();
+  let accessToken = cookies().get("spotify_access_token")?.value;
 
+  if (!accessToken) {
+    accessToken = (await getToken()).access_token;
+  }
+
+  try {
     const tracks = getRandomElements(seeds.tracks, 3);
     const artists = getRandomElements(seeds.artists, 2);
 
@@ -27,7 +32,7 @@ export async function getRecommend(seeds: {
         method: "GET",
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${token.access_token}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       },
     );

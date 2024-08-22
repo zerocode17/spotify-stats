@@ -22,14 +22,14 @@ export default function MainCards({
   const data = allData?.[timeRange] ?? null;
 
   return (
-    <main className="mx-auto mb-20 flex max-w-[1400px] flex-col justify-center px-4 lg:flex-row lg:space-x-10 lg:px-2">
-      <div className="order-2 mb-6 basis-1/3 lg:order-none">
+    <main className="mx-auto mb-20 flex max-w-[1400px] flex-col justify-center px-4 lg:flex-row lg:space-x-10 lg:px-4">
+      <div className="order-2 mb-6 flex w-full basis-1/3 justify-center lg:order-none">
         <TracksCard timeframe={timeframe} tracks={data?.tracks} />
       </div>
       <div className="order-1 mb-6 basis-1/3 lg:order-none">
         <GeneratorCard tracks={data?.tracks} artists={data?.artists} />
       </div>
-      <div className="order-3 basis-1/3 lg:order-none">
+      <div className="order-3 flex basis-1/3 justify-center lg:order-none">
         <ArtistsCard timeframe={timeframe} artists={data?.artists} />
       </div>
     </main>

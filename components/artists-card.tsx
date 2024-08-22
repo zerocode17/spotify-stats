@@ -20,7 +20,7 @@ export default function ArtistsCard({
   }
 
   return (
-    <Card className="h-fit w-full max-w-[450px]">
+    <Card className="h-fit w-full lg:max-w-[450px]">
       <CardHeader>
         <CardTitle>
           Top artists for the past{" "}

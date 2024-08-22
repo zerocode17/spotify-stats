@@ -43,8 +43,16 @@ export async function GET(request: Request): Promise<Response> {
       cookies().set("spotify_refresh_token", tokens.refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
+        sameSite: "lax",
         path: "/",
+      });
+
+      cookies().set("spotify_access_token", tokens.accessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        path: "/",
+        expires: tokens.accessTokenExpiresAt,
       });
 
       return new Response(null, {

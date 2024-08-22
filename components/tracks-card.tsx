@@ -60,7 +60,7 @@ export default function TracksCard({
   }
 
   return (
-    <Card className="h-fit w-full max-w-[450px]">
+    <Card className="h-fit w-full lg:max-w-[450px]">
       <CardHeader>
         <CardTitle>
           Top tracks for the past{" "}

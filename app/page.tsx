@@ -5,7 +5,6 @@ import TimeframeSelector from "@/components/timeframe-selector";
 import { validateRequest } from "@/lib/auth";
 import { getData } from "@/lib/spotify/getData";
 import { cookies } from "next/headers";
-import { redirect, RedirectType } from "next/navigation";
 
 export default async function Home({
   searchParams,
@@ -16,8 +15,11 @@ export default async function Home({
 
   const timeframe = searchParams.timeframe || "6 months";
 
+  const token = cookies().get("spotify_refresh_token")?.value;
+
   let allData;
-  if (user?.spotifyId) {
+
+  if (token) {
     allData = await getData();
     if (allData.error) {
       console.log("Error: " + allData.error);
