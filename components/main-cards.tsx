@@ -20,9 +20,10 @@ export default function MainCards({
           ? "long_term"
           : "medium_term";
   const data = allData?.[timeRange] ?? null;
+  console.log("data(main-cards): " + data);
 
   return (
-    <main className="mx-auto mb-20 flex max-w-[1400px] flex-col justify-center px-4 lg:flex-row lg:space-x-10 lg:px-0">
+    <main className="mx-auto mb-20 flex max-w-[1400px] flex-col justify-center px-4 lg:flex-row lg:space-x-10 lg:px-2">
       <div className="order-2 mb-6 basis-1/3 lg:order-none">
         <TracksCard timeframe={timeframe} tracks={data?.tracks} />
       </div>
