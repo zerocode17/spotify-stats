@@ -28,6 +28,10 @@ export default function GeneratorCard({
 
   const { toast } = useToast();
 
+  if (!tracks || !artists) {
+    return null;
+  }
+
   const seeds = {
     tracks: tracks.items.map((track: any) => track.id),
     artists: artists.items.map((artist: any) => artist.id),
